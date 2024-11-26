@@ -13,27 +13,27 @@ class MyNav extends React.Component {
               <Nav.Link href='#'>Home</Nav.Link>
               <NavDropdown title='Generi' id='basic-nav-dropdown'>
                 <NavDropdown.Item
-                  onClick={() => this.props.changeState('fantasy')}
+                  onClick={() => this.props.changeFilter('fantasy')}
                 >
                   Fantasy
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => this.props.changeState('history')}
+                  onClick={() => this.props.changeFilter('history')}
                 >
                   History
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => this.props.changeState('horror')}
+                  onClick={() => this.props.changeFilter('horror')}
                 >
                   Horror
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => this.props.changeState('romance')}
+                  onClick={() => this.props.changeFilter('romance')}
                 >
                   Romance
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  onClick={() => this.props.changeState('scifi')}
+                  onClick={() => this.props.changeFilter('scifi')}
                 >
                   Sci-Fi
                 </NavDropdown.Item>

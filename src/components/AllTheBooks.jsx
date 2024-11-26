@@ -1,12 +1,4 @@
-import {
-  Alert,
-  Card,
-  ListGroup,
-  Button,
-  Container,
-  Row,
-  Col,
-} from 'react-bootstrap'
+import { Card, Button, Row, Col } from 'react-bootstrap'
 
 import fantasyBooks from '../assets/fantasy.json'
 import historyBooks from '../assets/history.json'
@@ -23,38 +15,51 @@ const booksArray = [
 ]
 
 function AllTheBooks(props) {
-  console.log(props)
+  console.log('AllTheBooks props è:', props)
   return (
-    <div className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-5'>
+    <Row className='row-cols-2 row-cols-lg-3 row-cols-xxl-4 mt-1'>
       {booksArray
         .filter((book) => book.category === props.category)
         .map((book) => {
           return (
-            <div key={book.asin} className='col'>
-              <Card>
+            <Col key={book.asin} className='mt-5'>
+              <Card style={{ height: '500px' }} className='shadow'>
                 <Card.Img
-                  className='img-fluid'
+                  className='mx-auto mt-3 p-0 rounded shadow w-50'
                   variant='top'
                   src={book.img}
                   alt={`Copertina di ${book.title}`}
+                  onClick={() => {
+                    props.setModalShow(true, {
+                      asin: book.asin,
+                      title: book.title,
+                      img: book.img,
+                      price: book.price,
+                      category: book.category,
+                    })
+                  }}
                 />
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <Card.Text>ASIN: {book.asin}</Card.Text>
-                </Card.Body>
-                <Card.Body>
-                  <Card.Text className='text-end fs-4 '>
+                <Card.Body className='d-flex flex-column justify-content-between'>
+                  <Card.Title className='d-flex align-items-center py-0 m-0 mt-2 flex-grow-1'>
+                    {book.title.length >= 85
+                      ? book.title.slice(0, 82) + '...'
+                      : book.title}
+                  </Card.Title>
+                  <Card.Text className='d-flex py-0 m-0 mt-2 '>
+                    ASIN: {book.asin}
+                  </Card.Text>
+                  <Card.Text className='d-flex py-0 m-0 mt-2 justify-content-end fs-4 '>
                     <span className='fw-bold'>€ {book.price}</span>
                   </Card.Text>
-                  <Card.Text className='text-center'>
-                    <Button className='mx-auto'>Compra</Button>
+                  <Card.Text className='d-flex py-0 mt-3 text-center'>
+                    <Button className='mx-auto shadow'>Compra</Button>
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
+            </Col>
           )
         })}
-    </div>
+    </Row>
   )
 }
 
