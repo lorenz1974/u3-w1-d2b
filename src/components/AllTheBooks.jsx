@@ -16,32 +16,34 @@ const booksArray = [
 ]
 
 function AllTheBooks(props) {
-  {
-    booksArray.map((book) => {
-      console.log(book.asin)
-      return (
-        <div key={book.asin} className='col mt-3'>
-          <Card>
-            <Card.Img
-              variant='top'
-              src={book.img}
-              alt={`Copertina di ${book.title}`}
-            />
-            <Card.Body>
-              <Card.Title>{book.title}</Card.Title>
-              <Card.Text>ASIN: {book.asin}</Card.Text>
-            </Card.Body>
-            <ListGroup className='list-group-flush'>
-              <ListGroup.Item>Prezzo: €{book.price}</ListGroup.Item>
-            </ListGroup>
-            <Card.Body>
-              <Card.Link href='#'>Compra</Card.Link>
-            </Card.Body>
-          </Card>
-        </div>
-      )
-    })
-  }
+  return (
+    <div className='row'>
+      {booksArray.map((book) => {
+        console.log(book.asin)
+        return (
+          <div key={book.asin} className='col mt-3'>
+            <Card>
+              <Card.Img
+                variant='top'
+                src={book.img}
+                alt={`Copertina di ${book.title}`}
+              />
+              <Card.Body>
+                <Card.Title>{book.title}</Card.Title>
+                <Card.Text>ASIN: {book.asin}</Card.Text>
+              </Card.Body>
+              <ListGroup className='list-group-flush'>
+                <ListGroup.Item>Prezzo: €{book.price}</ListGroup.Item>
+              </ListGroup>
+              <Card.Body>
+                <Card.Link href='#'>Compra</Card.Link>
+              </Card.Body>
+            </Card>
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 export default AllTheBooks
