@@ -23,7 +23,7 @@ function App() {
       <main className="d-flex flex-column align-items-center justify-content flex-grow-1">
         <div className="row row-col-12 row-col-md-6 row-col-lg-4">
 
-          <AllTheBooks category={'fantasy'} />
+          <AllTheBooks category={'history'} />
 
         </div>
       </main>
